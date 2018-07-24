@@ -165,7 +165,7 @@
                                     <tr>
                                         <th>{{$item->id}}</th>
                                         {{--<a href="/admin/article/{{$item -> id}}">{{$item -> name}}</a>--}}
-                                        <th>{{$item->name}}</th>
+                                        <th><a href="/admin/clothes/{{$item->id}}">{{$item->name}}</a></th>
                                         <th>{{$item->price}}</th>
                                         <th>{{$item->description}}</th>
                                         <th><img src="{{$item -> images}}" alt="" style="width: 100px; height: 100px; border-radius: 50%"></th>
@@ -233,6 +233,28 @@
 <script src="{{asset('js/adminlte.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('js/demo.js')}}"></script>
+<script>
+
+    var listDeleteButton = document.getElementsByClassName('btn-delete');
+    for (var i = 0; i < listDeleteButton.length; i++) {
+        listDeleteButton[i].onclick = function () {
+            if(confirm('Are you sure ?')){
+                var params = '_token={{csrf_token()}}';
+                var currentId = this.id;
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("DELETE", "/admin/category/" + currentId, true);
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        alert('Delete success!');
+                        window.location.reload();
+                    }
+                };
+                xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhttp.send(params);
+            }
+        }
+    }
+</script>
 </body>
 
 </html>

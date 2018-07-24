@@ -122,7 +122,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Thông tin sản phẩm
+                Thông tin danh mục
                 <small>Admin Manager</small>
             </h1>
             <ol class="breadcrumb">
@@ -143,16 +143,15 @@
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">Danh Sách Sản Phẩm</h3>
+                            <h3 class="box-title">Thông tin danh mục</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>ID sản phẩm</th>
-                                    <th>Tên sản phẩm</th>
-                                    <th>Giá</th>
+                                    <th>ID danh mục</th>
+                                    <th>Tên danh mục</th>
                                     <th>Mô tả</th>
                                     <th>Ảnh</th>
                                     <th>Tình Trạng</th>
@@ -165,11 +164,10 @@
                                         <th>{{$obj->id}}</th>
                                         {{--<a href="/admin/article/{{$item -> id}}">{{$item -> name}}</a>--}}
                                         <th>{{$obj->name}}</th>
-                                        <th>{{$obj->price}}</th>
                                         <th>{{$obj->description}}</th>
                                         <th><img src="{{$obj -> images}}" alt="" style="width: 100px; height: 100px; border-radius: 50%"></th>
                                         <th>{{$obj->status}}</th>
-                                        <th><a href="/admin/clothes/{{$obj -> id}}/edit">Edit</a></th>
+                                        <th><a href="/admin/category/{{$obj -> id}}/edit">Edit</a></th>
                                         <th><span class="btn-delete" id="{{$obj-> id}}">Delete With Ajax</span></th>
                                     </tr>
                                 </tbody>

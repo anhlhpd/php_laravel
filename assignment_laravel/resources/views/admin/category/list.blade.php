@@ -122,7 +122,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Thông tin sản phẩm
+                Danh sách danh mục
                 <small>Admin Manager</small>
             </h1>
             <ol class="breadcrumb">
@@ -143,35 +143,35 @@
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">Danh Sách Sản Phẩm</h3>
+                            <h3 class="box-title">Danh sách danh mục</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
-                                <tr>
-                                    <th>ID sản phẩm</th>
-                                    <th>Tên sản phẩm</th>
-                                    <th>Giá</th>
-                                    <th>Mô tả</th>
-                                    <th>Ảnh</th>
-                                    <th>Tình Trạng</th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
+                                    <tr>
+                                        <th>ID danh mục</th>
+                                        <th>Tên danh mục</th>
+                                        <th>Mô tả</th>
+                                        <th>Ảnh</th>
+                                        <th>Tình Trạng</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
                                 </thead>
                                 <tbody id="result">
+                                @foreach($list_obj as $item)
                                     <tr>
-                                        <th>{{$obj->id}}</th>
+                                        <th>{{$item->id}}</th>
                                         {{--<a href="/admin/article/{{$item -> id}}">{{$item -> name}}</a>--}}
-                                        <th>{{$obj->name}}</th>
-                                        <th>{{$obj->price}}</th>
-                                        <th>{{$obj->description}}</th>
-                                        <th><img src="{{$obj -> images}}" alt="" style="width: 100px; height: 100px; border-radius: 50%"></th>
-                                        <th>{{$obj->status}}</th>
-                                        <th><a href="/admin/clothes/{{$obj -> id}}/edit">Edit</a></th>
-                                        <th><span class="btn-delete" id="{{$obj-> id}}">Delete With Ajax</span></th>
+                                        <th><a href="/admin/category/{{$item->id}}">{{$item->name}}</a></th>
+                                        <th>{{$item->description}}</th>
+                                        <th><img src="{{$item -> images}}" alt="" style="width: 100px; height: 100px; border-radius: 50%"></th>
+                                        <th>{{$item->status}}</th>
+                                        <th><a href="/admin/category/{{$item -> id}}/edit">Edit</a></th>
+                                        <th><span class="btn-delete" id="{{$item-> id}}">Delete With Ajax</span></th>
                                     </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

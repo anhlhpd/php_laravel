@@ -30,7 +30,7 @@
           <b>A</b>LT</span>
             <!-- logo for regular state and mobile devices -->
             <span class="logo-lg">
-          <b>Admin</b>CLOTHES</span>
+          <b>Admin</b>FUNZONE</span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top">
@@ -43,7 +43,6 @@
             </a>
         </nav>
     </header>
-
     <!-- Left side column. contains the logo and sidebar -->
     <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
@@ -122,7 +121,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Thông tin sản phẩm
+                Tạo mới sản phẩm
                 <small>Admin Manager</small>
             </h1>
             <ol class="breadcrumb">
@@ -140,62 +139,51 @@
         <!-- Main content -->
         <section class="content">
             <div class="row">
-                <div class="col-xs-12">
-                    <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title">Danh Sách Sản Phẩm</h3>
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Thêm danh mục</h3>
                         </div>
                         <!-- /.box-header -->
-                        <div class="box-body">
-                            <table id="example2" class="table table-bordered table-hover">
-                                <thead>
-                                <tr>
-                                    <th>ID sản phẩm</th>
-                                    <th>Tên sản phẩm</th>
-                                    <th>Giá</th>
-                                    <th>Mô tả</th>
-                                    <th>Ảnh</th>
-                                    <th>Tình Trạng</th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody id="result">
-                                    <tr>
-                                        <th>{{$obj->id}}</th>
-                                        {{--<a href="/admin/article/{{$item -> id}}">{{$item -> name}}</a>--}}
-                                        <th>{{$obj->name}}</th>
-                                        <th>{{$obj->price}}</th>
-                                        <th>{{$obj->description}}</th>
-                                        <th><img src="{{$obj -> images}}" alt="" style="width: 100px; height: 100px; border-radius: 50%"></th>
-                                        <th>{{$obj->status}}</th>
-                                        <th><a href="/admin/clothes/{{$obj -> id}}/edit">Edit</a></th>
-                                        <th><span class="btn-delete" id="{{$obj-> id}}">Delete With Ajax</span></th>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <!-- /.box-body -->
-                        <div class="box-footer">
-                            <div class="col-md-6 col-md-offset-6">
-                                <nav aria-label="Page navigation">
-                                    <ul class="pagination">
-                                    </ul>
-                                </nav>
+                        <!-- form start -->
+                        <form action="/admin/category" method="post">
+                            {{csrf_field()}}
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label>Tên Sản Phẩm</label>
+                                    <input type="text" class="form-control" placeholder="Điền tên sản phẩm" name="name">
+                                    <span></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Mô tả</label>
+                                    <input type="text" class="form-control" placeholder="Thêm mô tả" name="description">
+                                    <span></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Ảnh Sản Phẩm</label>
+                                    <input type="text" name="images">
+                                    {{--<span></span>--}}
+                                    {{--<img id="preview" src="#" style="max-width: 200px; padding: 5px;">--}}
+                                    {{--<input type="hidden" name="avatarUrl">--}}
+                                </div>
                             </div>
-                        </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <input type="submit" value="Save">
+                                <input type="reset" value="Reset">
+                            </div>
+                        </form>
                     </div>
                     <!-- /.box -->
+
                 </div>
-                <!-- /.col -->
+
             </div>
             <!-- /.row -->
         </section>
         <!-- /.content -->
     </div>
-
-
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
@@ -208,7 +196,7 @@
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-body">
-                    <h4 class="modal-title">Action Success</h4>
+                    <h4 class="modal-title">Thêm sản phẩm thành công!</h4>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Ok</button>
@@ -231,28 +219,6 @@
 <script src="{{asset('js/adminlte.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('js/demo.js')}}"></script>
-<script>
-
-    var listDeleteButton = document.getElementsByClassName('btn-delete');
-    for (var i = 0; i < listDeleteButton.length; i++) {
-        listDeleteButton[i].onclick = function () {
-            if(confirm('Are you sure ?')){
-                var params = '_token={{csrf_token()}}';
-                var currentId = this.id;
-                var xhttp = new XMLHttpRequest();
-                xhttp.open("DELETE", "/admin/category/" + currentId, true);
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        alert('Delete success!');
-                        window.location.reload();
-                    }
-                };
-                xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhttp.send(params);
-            }
-        }
-    }
-</script>
 </body>
 
 </html>

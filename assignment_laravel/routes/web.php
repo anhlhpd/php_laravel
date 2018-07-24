@@ -11,4 +11,5 @@
 |
 */
 
-Route::resource('/admin/clothes', 'ClothesController');
+Route::resource('admin/clothes', 'ClothesController');
+Route::resource('admin/category', 'CategoryController');
