@@ -16,7 +16,7 @@ class ClothesController extends Controller
     public function index()
     {
         $list_obj = Clothes::all();
-        return view('admin.clothes.list_clothes')->with('list_obj', $list_obj);
+        return view('admin.clothes.list')->with('list_obj', $list_obj);
     }
 
     /**
