@@ -13,7 +13,7 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::get();
+        $apartments = Apartment::get()->paginate(6);;
         return view('list')
             ->with('apartments', $apartments);
     }
